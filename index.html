@@ -11,7 +11,8 @@
         const BYTES_PER_CHUNK = 1024 * 1024; // 每个文件切片大小定为1MB .
         var slices;
         var totalSlices;
-
+        var ss =  document.getElementsByTagName('meta')['csrf-token'].content;
+        alert(ss);
         //发送请求
         function sendRequest() {
 
@@ -77,7 +78,7 @@
             fd.append("name", blob.name);
             fd.append("index", index);
 
-            xhr.open("POST", "./server.php", true);
+            xhr.open("POST", "/admin/video/uploads", true);
 
             //设置二进制文边界件头
             xhr.setRequestHeader("X_Requested_With", location.href.split("/")[3].replace(/[^a-z]+/g, '$'));
@@ -95,7 +96,7 @@
             fd.append("name", blob.name);
             fd.append("index", totalSlices);
 
-            xhr.open("POST", "./merge.php", true);
+            xhr.open("POST", "/admin/video/merge", true);
             xhr.setRequestHeader("X_Requested_With", location.href.split("/")[3].replace(/[^a-z]+/g, '$'));
             xhr.send(fd);
         }
