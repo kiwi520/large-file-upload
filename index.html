@@ -95,7 +95,7 @@
             fd.append("name", blob.name);
             fd.append("index", totalSlices);
 
-            xhr.open("POST", "./merage.php", true);
+            xhr.open("POST", "./merge.php", true);
             xhr.setRequestHeader("X_Requested_With", location.href.split("/")[3].replace(/[^a-z]+/g, '$'));
             xhr.send(fd);
         }
